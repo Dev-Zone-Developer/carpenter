@@ -6,12 +6,12 @@ import { ChevronDown, Star, Award, Clock } from 'lucide-react'
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section className="relative w-full min-h-screen flex items-center overflow-hidden">
       {/* Background Image */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 w-full">
         <Image
           // src="https://images.unsplash.com/photo-1504148455328-c376907d081c?w=1920&q=85"
-          src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1920&q=85"
+          src="/Hero-bg.png"
           alt="Professional carpenter working in modern workshop Lahore Pakistan"
           fill
           className="object-cover object-center"

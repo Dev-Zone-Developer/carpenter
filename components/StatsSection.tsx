@@ -41,7 +41,7 @@ export default function StatsSection() {
       {/* Background Image with overlay */}
       <div className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?w=1920&q=80"
+          src="/Woodworking workshop Lahore.png"
           alt="Woodworking workshop Lahore"
           fill
           className="object-cover"

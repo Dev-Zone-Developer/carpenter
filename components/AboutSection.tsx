@@ -28,7 +28,7 @@ export default function AboutSection() {
           >
             <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-wood-lg">
               <Image
-                src="https://images.unsplash.com/photo-1588854337236-6889d631faa8?w=800&q=85"
+                src="/Expert carpenter crafting furniture in Lahore workshop.png"
                 alt="Expert carpenter crafting furniture in Lahore workshop"
                 fill
                 className="object-cover img-reveal"
@@ -57,7 +57,7 @@ export default function AboutSection() {
               className="absolute -top-6 -left-6 w-40 h-32 rounded-xl overflow-hidden shadow-lg border-4 border-cream"
             >
               <Image
-                src="https://images.unsplash.com/photo-1516733725897-1aa73b87c8e8?w=300&q=80"
+                src="/Wood crafting detail.png"
                 alt="Wood crafting detail"
                 fill
                 className="object-cover"

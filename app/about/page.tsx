@@ -26,7 +26,7 @@ export default function AboutPage() {
       <section className="relative pt-32 pb-20 bg-charcoal overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1595007359858-af28462e9b0b?w=1920&q=80"
+            src="/about.png"
             alt="Lahore carpenter workshop"
             fill
             className="object-cover opacity-20"

@@ -18,7 +18,7 @@ export default function ServicesPage() {
       <section className="relative pt-32 pb-20 bg-charcoal overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=1920&q=80"
+            src="/Carpenter-services-Lahore.png"
             alt="Carpenter services Lahore"
             fill
             className="object-cover opacity-20"

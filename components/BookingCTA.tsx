@@ -8,7 +8,7 @@ export default function BookingCTA() {
     <section className="relative py-20 overflow-hidden">
       <div className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=1920&q=80"
+          src="/Luxury wooden interior Lahore.png"
           alt="Luxury wooden interior Lahore"
           fill
           className="object-cover"

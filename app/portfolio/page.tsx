@@ -18,7 +18,7 @@ export default function PortfolioPage() {
       <section className="relative pt-32 pb-20 bg-charcoal overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1920&q=80"
+            src="/Carpenter portfolio Lahore.png"
             alt="Carpenter portfolio Lahore"
             fill
             className="object-cover opacity-20"

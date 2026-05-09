@@ -17,7 +17,7 @@ export default function ContactPage() {
       <section className="relative pt-32 pb-20 bg-charcoal overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1920&q=80"
+            src="/Contact Lahore Carpenter Services.png"
             alt="Contact Lahore Carpenter Services"
             fill
             className="object-cover opacity-20"
