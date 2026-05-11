@@ -1,5 +1,8 @@
+"use client"
+
 import Link from 'next/link'
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
+import { useStore } from './Store/Store';
 
 const quickLinks = [
   { label: 'Home', href: '/' },
@@ -16,6 +19,7 @@ const serviceLinks = [
 ]
 
 export default function Footer() {
+  const { client_Phone, client_email, client_map_address_text } = useStore();
   return (
     <footer className="bg-charcoal text-cream/70 relative overflow-hidden">
       {/* Wood grain top border */}
@@ -84,9 +88,9 @@ export default function Footer() {
             <h4 className="font-display font-bold text-cream text-base mb-5">Contact Info</h4>
             <div className="space-y-4">
               {[
-                { icon: MapPin, text: 'Johar Town, Lahore, Punjab, Pakistan' },
-                { icon: Phone, text: '+92 300 1234567', href: 'tel:+923001234567' },
-                { icon: Mail, text: 'info@lahorecarpenter.pk', href: 'mailto:info@lahorecarpenter.pk' },
+                { icon: MapPin, text: client_map_address_text },
+                { icon: Phone, text: client_Phone, href: `tel:${client_Phone}` },
+                { icon: Mail, text: client_email, href: `mailto:${client_email}` },
                 { icon: Clock, text: 'Mon–Sat: 8AM–8PM\nSun: 10AM–5PM' },
               ].map(({ icon: Icon, text, href }, i) => {
                 const inner = (
@@ -110,7 +114,7 @@ export default function Footer() {
       <div className="border-t border-white/5 py-5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-body">
           <span>© {new Date().getFullYear()} Lahore Carpenter Services. All rights reserved.</span>
-          <span className="text-wood-500">Johar Town, Lahore, Punjab, Pakistan</span>
+          <span className="text-wood-500">{client_map_address_text}</span>
         </div>
       </div>
     </footer>

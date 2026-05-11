@@ -3,8 +3,10 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ChevronDown, Star, Award, Clock } from 'lucide-react'
+import { useStore } from "@/components/Store/Store";
 
 export default function Hero() {
+  const { client_Phone } = useStore();
   return (
     <section className="relative w-full min-h-screen flex items-center overflow-hidden">
       {/* Background Image */}
@@ -96,22 +98,22 @@ export default function Hero() {
               Get Free Quote
             </Link>
             <a
-              href="tel:+923001234567"
+              href={`tel:${client_Phone}`}
               className="
-    lg:hidden
-    flex items-center gap-3
-    bg-white
-    hover:bg-gray-100
-    text-blue-600
-    px-6 py-3
-    rounded-2xl
-    font-semibold
-    shadow-xl
-    border border-gray-200
-    transition-all duration-300
-    hover:scale-105
-    active:scale-95
-  "
+                          lg:hidden
+                          flex items-center gap-3
+                          bg-white
+                          hover:bg-gray-100
+                          text-blue-600
+                          px-6 py-3
+                          rounded-2xl
+                          font-semibold
+                          shadow-xl
+                          border border-gray-200
+                          transition-all duration-300
+                          hover:scale-105
+                          active:scale-95
+                "
             >
               <Image
                 src="/phone.png"

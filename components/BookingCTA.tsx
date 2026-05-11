@@ -2,8 +2,10 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useStore } from './Store/Store';
 
 export default function BookingCTA() {
+  const { client_Phone } = useStore();
   return (
     <section className="relative py-20 overflow-hidden">
       <div className="absolute inset-0">
@@ -38,7 +40,7 @@ export default function BookingCTA() {
               Book Free Consultation
             </Link>
             <a
-              href="https://wa.me/923001234567"
+              href={`https://wa.me/${client_Phone.replace(/\s/g, '')}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 bg-green-500 hover:bg-green-400 text-white px-8 py-4 rounded-xl font-body font-bold text-lg transition-all hover:-translate-y-1"
@@ -46,10 +48,10 @@ export default function BookingCTA() {
               💬 WhatsApp Now
             </a>
             <a
-              href="tel:+923001234567"
+              href={`tel:${client_Phone}`}
               className="flex items-center gap-2 glass border border-cream/20 text-cream px-8 py-4 rounded-xl font-body font-bold text-lg hover:border-wood-400/50 transition-all"
             >
-              📞 +92 300 1234567
+              📞 {client_Phone}
             </a>
           </div>
         </motion.div>

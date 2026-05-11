@@ -3,9 +3,11 @@ import { useEffect, useState } from 'react'
 import { ChevronUp } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
+import { useStore } from './Store/Store'
 
 export default function FloatingButtons() {
   const [showTop, setShowTop] = useState(false)
+  const { client_Phone } = useStore();
 
   useEffect(() => {
     const onScroll = () => setShowTop(window.scrollY > 500)
@@ -38,7 +40,7 @@ export default function FloatingButtons() {
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.5 }}
-        href="https://wa.me/923001234567?text=Hi!%20I%20need%20carpenter%20services%20in%20Lahore."
+        href={`https://wa.me/${client_Phone.replace(/\D/g, '')}?text=Hi!%20I%20need%20carpenter%20services%20in%20Lahore.`}
         target="_blank"
         rel="noopener noreferrer"
         className="whatsapp-btn w-14 h-14 rounded-full bg-green-500 hover:bg-green-400 text-white flex items-center justify-center shadow-lg hover:shadow-xl transition-all"
@@ -64,7 +66,7 @@ export default function FloatingButtons() {
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.7 }}
-        href="tel:+923001234567"
+        href={`tel:${client_Phone}`}
         className="lg:hidden w-14 h-14 rounded-full bg-white hover:bg-gray-50 flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.2)] transition-all duration-200"
         aria-label="Call Now"
       >

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Menu, X, Phone, ChevronDown } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useStore } from './Store/Store'
 
 const navLinks = [
   { label: 'Home', href: '/' },
@@ -13,6 +14,8 @@ const navLinks = [
 ]
 
 export default function Navbar() {
+  const { client_Phone } = useStore()
+
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -63,11 +66,11 @@ export default function Navbar() {
         {/* CTA */}
         <div className="hidden lg:flex items-center gap-3">
           <a
-            href="tel:+923001234567"
+            href={`tel:${client_Phone}`}
             className="flex items-center gap-2 text-cream/80 hover:text-wood-400 transition-colors text-sm"
           >
             <Phone size={15} />
-            <span>+92 300 1234567</span>
+            <span>{client_Phone}</span>
           </a>
           <Link
             href="/contact"
@@ -116,11 +119,11 @@ export default function Navbar() {
               ))}
               <div className="pt-4 flex flex-col gap-3">
                 <a
-                  href="tel:+923001234567"
+                  href={`tel:${client_Phone}`}
                   className="flex items-center gap-2 text-wood-400 font-medium"
                 >
                   <Phone size={18} />
-                  +92 300 1234567
+                  {client_Phone}
                 </a>
                 <Link
                   href="/contact"
