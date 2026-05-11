@@ -1,0 +1,8 @@
+{
+  // 1 means everything is okay and 0 means show the subscription page
+  "carpenter" : 1,
+  "Data" : {
+      "name" : "Muhammad Abid Hussain",
+      "phone" : "+923436544231"
+    }
+}
