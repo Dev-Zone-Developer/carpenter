@@ -68,7 +68,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="font-body text-lg text-cream/75 leading-relaxed mb-10 max-w-2xl"
+            className="font-body text-lg text-white/90 leading-relaxed mb-10 max-w-2xl [text-shadow:0.5px_0.5px_0px_black]"
           >
             Expert furniture repair, custom woodwork, kitchen cabinets, doors, wardrobes,
             office furniture, and premium interior wood solutions — crafted with precision
@@ -97,9 +97,32 @@ export default function Hero() {
             </Link>
             <a
               href="tel:+923001234567"
-              className="lg:hidden flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white px-6 py-4 rounded-xl font-bold transition-colors"
+              className="
+    lg:hidden
+    flex items-center gap-3
+    bg-white
+    hover:bg-gray-100
+    text-blue-600
+    px-6 py-3
+    rounded-2xl
+    font-semibold
+    shadow-xl
+    border border-gray-200
+    transition-all duration-300
+    hover:scale-105
+    active:scale-95
+  "
             >
-              📞 Call Now
+              <Image
+                src="/phone.png"
+                alt="Call Now"
+                width={36}
+                height={36}
+              />
+
+              <span className="tracking-wide">
+                Call Now
+              </span>
             </a>
           </motion.div>
 
