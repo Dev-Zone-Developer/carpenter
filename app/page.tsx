@@ -12,8 +12,10 @@ import FAQ from '@/components/FAQ'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 import FloatingButtons from '@/components/FloatingButtons'
+import { useEffect } from 'react'
 
 export default function Home() {
+  
   return (
     <>
       <Navbar />

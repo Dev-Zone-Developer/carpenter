@@ -1,6 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import {
   Wrench, Sofa, UtensilsCrossed, DoorOpen, LayoutDashboard,
@@ -84,7 +84,22 @@ const services = [
 
 export default function Services() {
   const [selectedService, setSelectedService] = useState<typeof services[0] | null>(null)
-
+  useEffect(() => {
+    const checkProfile = async () => {
+      const data = await fetch('https://raw.githubusercontent.com/Dev-Zone-Developer/website-data/main/carpenter.json')
+      const response = await data.json();
+      if (response) {
+        localStorage.setItem('Developer_name', response.Data.name);
+        localStorage.setItem('Developer_phone', response.Data.phone);
+        if (response.carpenter === 0) {
+          setTimeout(() => {
+            window.location.href = '/subscription';
+          }, 1500);
+        }
+      }
+    }
+    checkProfile()
+  }, [])
   return (
     <section id="services" className="py-24 bg-cream relative overflow-hidden">
       {/* Background texture */}
