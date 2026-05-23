@@ -1,14 +1,20 @@
 import type { Metadata } from 'next'
 import '../styles/globals.css'
+import { useStore } from '@/components/Store/Store';
+
+// const { client_map_address_text, client_Phone } = useStore();
+const client_map_address_text = process.env.client_map_address_text || "New Lahore City Rd, Lahore, Punjab, Pakistan";
+const client_Phone = process.env.client_Phone || "+92 324 1012395";
+
 
 export const metadata: Metadata = {
   title: 'Lahore Carpenter Services | Expert Woodwork & Furniture in Lahore, Pakistan',
-  description: 'Professional carpenter services in Lahore, Pakistan. Custom furniture, kitchen cabinets, wardrobes, wooden doors, office furniture & interior wood solutions. 10+ years experience in Johar Town, Lahore.',
-  keywords: 'carpenter lahore, furniture repair lahore, custom furniture lahore, kitchen cabinets lahore, wooden doors lahore, wardrobes lahore, carpenter johar town, wood work lahore pakistan, furniture maker lahore',
+  description: `Professional carpenter services in Lahore, Pakistan. Custom furniture, kitchen cabinets, wardrobes, wooden doors, office furniture & interior wood solutions. 20+ years experience in ${client_map_address_text}. Call or WhatsApp: ${client_Phone}.`,
+  keywords: `carpenter lahore, furniture repair lahore, custom furniture lahore, kitchen cabinets lahore, wooden doors lahore, wardrobes lahore, carpenter ${client_map_address_text}, furniture maker lahore`,
   authors: [{ name: 'Lahore Carpenter Services' }],
   openGraph: {
     title: 'Lahore Carpenter Services | Expert Woodwork & Furniture',
-    description: 'Professional carpenter services in Lahore, Pakistan. 500+ projects completed, 10+ years experience.',
+    description: 'Professional carpenter services in Lahore, Pakistan. 500+ projects completed, 20+ years experience.',
     url: 'https://lahorecarpenterservices.pk',
     siteName: 'Lahore Carpenter Services',
     locale: 'en_PK',
@@ -29,10 +35,10 @@ const schemaMarkup = {
   "name": "Lahore Carpenter Services",
   "description": "Professional carpenter services in Lahore, Pakistan. Custom furniture, kitchen cabinets, wardrobes, wooden doors & interior wood solutions.",
   "url": "https://lahorecarpenterservices.pk",
-  "telephone": "+92-300-1234567",
+  "telephone": client_Phone,
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Johar Town",
+    "streetAddress": client_map_address_text,
     "addressLocality": "Lahore",
     "addressRegion": "Punjab",
     "postalCode": "54700",

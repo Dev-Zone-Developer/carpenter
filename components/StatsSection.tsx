@@ -31,8 +31,8 @@ function CounterNumber({ target, suffix = '' }: { target: number; suffix?: strin
 const stats = [
   { num: 500, suffix: '+', label: 'Projects Completed', sub: 'Across Lahore & Punjab' },
   { num: 300, suffix: '+', label: 'Happy Clients', sub: 'Satisfied homeowners' },
-  { num: 10, suffix: '+', label: 'Years Experience', sub: 'Master craftsmanship' },
-  { num: 15, suffix: '', label: 'Expert Craftsmen', sub: 'Skilled professionals' },
+  { num: 20, suffix: '+', label: 'Years Experience', sub: 'Master craftsmanship' },
+  { num: 20, suffix: '', label: 'Expert Craftsmen', sub: 'Skilled professionals' },
 ]
 
 export default function StatsSection() {

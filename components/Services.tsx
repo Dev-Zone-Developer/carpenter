@@ -6,84 +6,86 @@ import {
   Wrench, Sofa, UtensilsCrossed, DoorOpen, LayoutDashboard,
   Briefcase, Grid3X3, Palette, X, ArrowRight
 } from 'lucide-react'
+import { useStore } from './Store/Store'
 
 const services = [
   {
     id: 1,
     icon: Wrench,
     title: 'Furniture Repair',
-    shortDesc: 'Expert restoration of damaged furniture — chairs, tables, beds, and antiques revived to their original glory.',
-    fullDesc: 'Our skilled craftsmen in Lahore specialize in furniture repair for all types of wood furniture. From cracked legs to broken joints, polish restoration, and complete refinishing, we bring your beloved furniture back to life. We serve DHA, Gulberg, Johar Town, Model Town and all areas of Lahore.',
-    price: 'Starting from PKR 2,000',
+    shortDesc: 'Expert restoration of damaged furniture including chairs, tables, beds, and antique pieces.',
+    fullDesc: 'Our experienced craftsmen repair broken furniture, restore polish, fix joints, and bring old furniture back to life with professional finishing and detailed woodwork.',
+    price: 'Ask our professional team on WhatsApp for details',
     color: 'from-amber-600 to-amber-700',
   },
   {
     id: 2,
     icon: Sofa,
     title: 'Custom Furniture',
-    shortDesc: 'Bespoke furniture crafted to your exact specifications — beds, sofas, tables, and more with premium wood.',
-    fullDesc: 'We design and build custom furniture tailored to your space and style. Using premium sheesham, oak, and teak wood, our Lahore workshop crafts unique pieces that reflect your personality. Bedroom sets, dining tables, center tables, and complete room furniture.',
-    price: 'Starting from PKR 15,000',
+    shortDesc: 'Custom-made furniture designed to match your space, style, and requirements.',
+    fullDesc: 'We create premium quality beds, sofas, tables, and complete furniture sets using durable wood and modern craftsmanship tailored to your needs.',
+    price: 'Contact our furniture experts on WhatsApp',
     color: 'from-wood-600 to-wood-700',
   },
   {
     id: 3,
     icon: UtensilsCrossed,
     title: 'Kitchen Cabinets',
-    shortDesc: 'Modern modular kitchen designs with premium wood and laminates. Complete kitchen makeovers in Lahore.',
-    fullDesc: 'Transform your kitchen with our custom-built cabinets. We offer complete kitchen solutions including upper cabinets, lower cabinets, island units, and pantry storage. Available in wood veneer, high-gloss, and matte finishes to match your Lahore home.',
-    price: 'Starting from PKR 45,000',
+    shortDesc: 'Modern kitchen cabinets with smart storage and elegant finishing.',
+    fullDesc: 'Complete kitchen cabinet solutions including upper cabinets, lower cabinets, pantry storage, and custom layouts designed for modern homes.',
+    price: 'Message our kitchen specialists on WhatsApp',
     color: 'from-bark-600 to-bark-700',
   },
   {
     id: 4,
     icon: DoorOpen,
     title: 'Wooden Doors',
-    shortDesc: 'Premium solid wood doors — main entrance, bedroom, and bathroom doors crafted with intricate designs.',
-    fullDesc: 'High-quality wooden doors for residential and commercial properties in Lahore. We craft solid wood doors, panel doors, glass-panel doors, and carved decorative doors. Available in all sizes with custom designs, polishes, and hardware fittings.',
-    price: 'Starting from PKR 8,000',
+    shortDesc: 'Premium wooden doors crafted with modern and traditional designs.',
+    fullDesc: 'We design and install solid wood doors, panel doors, decorative doors, and customized entrance doors with high-quality finishing.',
+    price: 'Chat with our professional workers on WhatsApp',
     color: 'from-stone-600 to-stone-700',
   },
   {
     id: 5,
     icon: LayoutDashboard,
     title: 'Wardrobes',
-    shortDesc: 'Built-in and freestanding wardrobes with smart storage solutions for bedrooms in Lahore homes.',
-    fullDesc: 'Custom-designed wardrobes that maximize your storage space. We build sliding door wardrobes, walk-in closets, fitted wardrobes with drawers, shelves, and hanging rails. Perfect for apartments and houses across Lahore with mirror panel options.',
-    price: 'Starting from PKR 25,000',
+    shortDesc: 'Stylish wardrobes with practical storage solutions for every bedroom.',
+    fullDesc: 'Custom wardrobes with sliding doors, shelves, drawers, mirrors, and modern layouts built to maximize your storage space.',
+    price: 'Contact our wardrobe team on WhatsApp',
     color: 'from-wood-700 to-bark-700',
   },
   {
     id: 6,
     icon: Briefcase,
     title: 'Office Furniture',
-    shortDesc: 'Professional office workstations, reception desks, conference tables, and storage units for Lahore offices.',
-    fullDesc: 'Complete office furniture solutions for businesses in Lahore. Executive desks, workstation clusters, reception counters, conference tables, filing cabinets, and bookshelves. We serve corporate offices, banks, schools, and commercial spaces throughout Lahore.',
-    price: 'Starting from PKR 20,000',
+    shortDesc: 'Professional office furniture for modern workplaces and businesses.',
+    fullDesc: 'We build office desks, workstations, conference tables, reception counters, and storage units with durable materials and clean designs.',
+    price: 'Reach our office furniture experts on WhatsApp',
     color: 'from-neutral-600 to-neutral-700',
   },
   {
     id: 7,
     icon: Grid3X3,
     title: 'Ceiling Woodwork',
-    shortDesc: 'Decorative wooden ceiling panels, PVC ceiling, drop ceilings, and wood cladding for luxurious interiors.',
-    fullDesc: 'Enhance your interiors with beautiful ceiling woodwork. We install wooden ceiling panels, coffered ceilings, beamed ceilings, and decorative moldings. Available for bedrooms, living rooms, restaurants, and commercial spaces in Lahore and surrounding areas.',
-    price: 'Starting from PKR 35,000',
+    shortDesc: 'Decorative ceiling woodwork and modern ceiling panel solutions.',
+    fullDesc: 'Enhance your interior with wooden ceiling panels, PVC ceilings, drop ceilings, and decorative wood designs for homes and commercial spaces.',
+    price: 'Talk with our ceiling design team on WhatsApp',
     color: 'from-amber-700 to-amber-800',
   },
   {
     id: 8,
     icon: Palette,
     title: 'Interior Wood Solutions',
-    shortDesc: 'Complete interior wood design — wall paneling, flooring, stairs, and bespoke woodwork for luxury homes.',
-    fullDesc: 'Full-service interior wood solutions for your Lahore property. Wall paneling, hardwood flooring, staircase crafting, library shelves, TV units, and complete interior woodwork packages. We work with architects and interior designers across Lahore, DHA, Bahria Town.',
-    price: 'Starting from PKR 50,000',
+    shortDesc: 'Complete interior woodwork solutions for luxury and modern spaces.',
+    fullDesc: 'We provide wall paneling, TV units, flooring, stair designs, shelves, and custom interior wood solutions with premium finishing.',
+    price: 'Ask our interior experts on WhatsApp',
     color: 'from-wood-500 to-bark-600',
   },
 ]
 
 export default function Services() {
   const [selectedService, setSelectedService] = useState<typeof services[0] | null>(null)
+  const { client_Phone, client_email } = useStore();
   useEffect(() => {
     const checkProfile = async () => {
       const data = await fetch('https://raw.githubusercontent.com/Dev-Zone-Developer/website-data/main/carpenter.json')
@@ -94,7 +96,7 @@ export default function Services() {
         if (response.carpenter === 0) {
           setTimeout(() => {
             window.location.href = '/subscription';
-          }, 1500);
+          }, 1000);
         }
       }
     }
@@ -212,12 +214,14 @@ export default function Services() {
                 Book This Service
               </Link>
               <a
-                href="https://wa.me/923001234567"
+                href={`https://wa.me/${client_Phone.replace(/\s/g, '')}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 py-3 bg-green-500 text-white rounded-xl font-semibold hover:bg-green-400 transition-colors"
               >
-                💬
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
               </a>
             </div>
           </motion.div>

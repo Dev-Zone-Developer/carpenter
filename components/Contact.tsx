@@ -12,13 +12,13 @@ const services = [
 ]
 
 export default function Contact() {
-  const { client_Phone, client_map_address_link } = useStore();
+  const { client_Phone, client_map_address_link, client_email, client_map_address_text } = useStore();
 
   const contactInfo = [
     {
       icon: MapPin,
       label: 'Our Location',
-      value: 'Johar Town, Lahore, Punjab, Pakistan',
+      value: client_map_address_text,
       sub: 'We serve all areas of Lahore',
     },
     {
@@ -31,25 +31,61 @@ export default function Contact() {
     {
       icon: Clock,
       label: 'Business Hours',
-      value: 'Mon–Sat: 8:00 AM – 8:00 PM',
-      sub: 'Sunday: 10:00 AM – 5:00 PM',
+      value: 'Saturday–Thursday: 24/7',
+      sub: 'Friday: 6am–10pm',
     },
     {
       icon: Mail,
       label: 'Email',
-      value: 'info@lahorecarpenter.pk',
+      value: `${client_email}`,
       sub: 'We reply within 24 hours',
-      href: 'mailto:info@lahorecarpenter.pk',
+      href: `mailto:${client_email}`,
     },
   ]
 
   const [submitted, setSubmitted] = useState(false)
   const [form, setForm] = useState({ name: '', phone: '', service: '', message: '' })
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setSubmitted(true)
-  }
+  // Helper: delay for retries
+  const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
+  // Retry logic: attempts = total attempts (1 initial + retries)
+  const sendWithRetry = async (data: any, maxAttempts = 3) => {
+    let lastError;
+    for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return; // Success – exit
+      } catch (err) {
+        lastError = err;
+        if (attempt < maxAttempts) {
+          // Wait 1 second before retry (simple backoff)
+          await delay(1000);
+        }
+      }
+    }
+    // After all attempts failed
+    console.error('Failed to send email after', maxAttempts, 'attempts:', lastError);
+    // Optional: show a small non‑intrusive error (e.g., toast) – but do NOT change submitted state
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    // 1. Instant success UI
+    setSubmitted(true);
+
+    // 2. Background sending with retries (up to 2 retries = 3 total attempts)
+    sendWithRetry(form, 3).finally(() => {
+      // 3. After background process finishes (success or fail), reset form and hide success message
+      setForm({ name: '', phone: '', service: '', message: '' });
+      setTimeout(() => setSubmitted(false), 5000);
+    });
+  };
 
   return (
     <section id="contact" className="py-24 bg-cream">
@@ -116,6 +152,7 @@ export default function Contact() {
                     <label className="block font-body text-sm font-semibold text-bark-700 mb-2">Service Required</label>
                     <select
                       value={form.service}
+                      required
                       onChange={e => setForm({ ...form, service: e.target.value })}
                       className="w-full border border-wood-200 rounded-xl px-4 py-3 font-body text-sm focus:outline-none focus:border-wood-500 focus:ring-2 focus:ring-wood-100 transition-all bg-cream appearance-none"
                     >
@@ -128,6 +165,7 @@ export default function Contact() {
                     <textarea
                       rows={4}
                       value={form.message}
+                      required
                       onChange={e => setForm({ ...form, message: e.target.value })}
                       className="w-full border border-wood-200 rounded-xl px-4 py-3 font-body text-sm focus:outline-none focus:border-wood-500 focus:ring-2 focus:ring-wood-100 transition-all bg-cream resize-none"
                       placeholder="Describe your project or requirements..."

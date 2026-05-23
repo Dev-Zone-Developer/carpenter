@@ -2,6 +2,8 @@
 
 import Link from 'next/link'
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
+// import { Facebook, Linkedin, Instagram, Youtube } from 'lucide-react';
+import { SiFacebook, SiInstagram, SiWhatsapp, SiYoutube } from 'react-icons/si';
 import { useStore } from './Store/Store';
 
 const quickLinks = [
@@ -42,16 +44,44 @@ export default function Footer() {
               Lahore's trusted carpenter service for custom furniture, kitchen cabinets, wardrobes, and premium interior wood solutions since 2013.
             </p>
             {/* Social icons */}
+
+
             <div className="flex gap-3">
-              {['f', 'in', 'ig', 'yt'].map((s) => (
-                <a
-                  key={s}
-                  href="#"
-                  className="w-9 h-9 rounded-lg bg-white/10 hover:bg-wood-600 flex items-center justify-center text-xs font-bold transition-all hover:-translate-y-0.5"
-                >
-                  {s}
-                </a>
-              ))}
+              <a
+                href="#"
+                className="w-9 h-9 rounded-lg bg-white/10 hover:bg-wood-600 flex items-center justify-center transition-all hover:-translate-y-0.5"
+                aria-label="Facebook"
+              >
+                <SiFacebook size={16} />
+              </a>
+              {/* <a
+                href="#"
+                className="w-9 h-9 rounded-lg bg-white/10 hover:bg-wood-600 flex items-center justify-center transition-all hover:-translate-y-0.5"
+                aria-label="LinkedIn"
+              >
+                <SiLinkedin size={16} />
+              </a> */}
+              <a
+                href="#"
+                className="w-9 h-9 rounded-lg bg-white/10 hover:bg-wood-600 flex items-center justify-center transition-all hover:-translate-y-0.5"
+                aria-label="Instagram"
+              >
+                <SiInstagram size={16} />
+              </a>
+              <a
+                href="#"
+                className="w-9 h-9 rounded-lg bg-white/10 hover:bg-wood-600 flex items-center justify-center transition-all hover:-translate-y-0.5"
+                aria-label="YouTube"
+              >
+                <SiYoutube size={16} />
+              </a>
+              <a
+                href={`https://wa.me/${client_Phone.replace(/\D/g, '')}`}
+                className="w-9 h-9 rounded-lg bg-white/10 hover:bg-wood-600 flex items-center justify-center transition-all hover:-translate-y-0.5"
+                aria-label="WhatsApp"
+              >
+                <SiWhatsapp size={16} />
+              </a>
             </div>
           </div>
 
@@ -91,7 +121,7 @@ export default function Footer() {
                 { icon: MapPin, text: client_map_address_text },
                 { icon: Phone, text: client_Phone, href: `tel:${client_Phone}` },
                 { icon: Mail, text: client_email, href: `mailto:${client_email}` },
-                { icon: Clock, text: 'Mon–Sat: 8AM–8PM\nSun: 10AM–5PM' },
+                { icon: Clock, text: 'Saturday–Thursday: 24/7\nFriday: 6am–10pm' },
               ].map(({ icon: Icon, text, href }, i) => {
                 const inner = (
                   <div className="flex gap-3">

@@ -14,10 +14,10 @@ export const metadata: Metadata = {
 }
 
 const team = [
-  { name: 'Ustad Ahmed Khan', role: 'Master Carpenter', exp: '15 years', initials: 'AK' },
-  { name: 'Bashir Ahmad', role: 'Kitchen Specialist', exp: '12 years', initials: 'BA' },
-  { name: 'Tariq Mehmood', role: 'Interior Wood Expert', exp: '10 years', initials: 'TM' },
-  { name: 'Naveed Iqbal', role: 'Furniture Designer', exp: '8 years', initials: 'NI' },
+  { name: 'Khursheed Ahmed', role: 'Master Carpenter', exp: '20 years', initials: 'AK' },
+  { name: 'Muneer Ahmed', role: 'Kitchen Specialist', exp: '10 years', initials: 'BA' },
+  { name: 'Shafiquee Ahmed', role: 'Interior Wood Expert', exp: '15 years', initials: 'TM' },
+  { name: 'Ali Sheraz Assist', role: 'Furniture Designer', exp: '5 years', initials: 'NI' },
 ]
 
 export default function AboutPage() {
