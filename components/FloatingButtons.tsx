@@ -40,7 +40,7 @@ export default function FloatingButtons() {
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.5 }}
-        href={`https://wa.me/${client_Phone.replace(/\D/g, '')}?text=Hi!%20I%20need%20carpenter%20services%20in%20Lahore.`}
+        href={`https://wa.me/+923241012395?text=Hi!%20I%20need%20carpenter%20services%20in%20Lahore.`}
         target="_blank"
         rel="noopener noreferrer"
         className="whatsapp-btn w-14 h-14 rounded-full bg-green-500 hover:bg-green-400 text-white flex items-center justify-center shadow-lg hover:shadow-xl transition-all"
