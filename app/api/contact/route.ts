@@ -25,23 +25,23 @@ export async function POST(request: NextRequest) {
         }
 
         // Email to the user (confirmation)
-        const userMailOptions = {
-            from: `"Your Company Name" <${process.env.SMTP_USER}>`,
-            to: 'alisheraz2410@gmail.com',
-            subject: 'We received your message – thank you!',
-            html: `
-        <h2>Hello ${name},</h2>
-        <p>Thank you for contacting us. We have received your inquiry and will get back to you within 2 hours.</p>
-        <h3>Your request summary:</h3>
-        <ul>
-          <li><strong>Name:</strong> ${name}</li>
-          <li><strong>Phone:</strong> ${phone}</li>
-          <li><strong>Service:</strong> ${service || 'Not specified'}</li>
-          <li><strong>Message:</strong> ${message || 'No message provided'}</li>
-        </ul>
-        <p>Best regards,<br/>The Team</p>
-      `,
-        };
+    //     const userMailOptions = {
+    //         from: `"Lahore Carpenter Services" <${process.env.SMTP_USER}>`,
+    //         to: process.env.ADMIN_EMAIL,
+    //         subject: 'We received your message – thank you!',
+    //         html: `
+    //     <h2>Hello ${name},</h2>
+    //     <p>Thank you for contacting us. We have received your inquiry and will get back to you within 2 hours.</p>
+    //     <h3>Your request summary:</h3>
+    //     <ul>
+    //       <li><strong>Name:</strong> ${name}</li>
+    //       <li><strong>Phone:</strong> ${phone}</li>
+    //       <li><strong>Service:</strong> ${service || 'Not specified'}</li>
+    //       <li><strong>Message:</strong> ${message || 'No message provided'}</li>
+    //     </ul>
+    //     <p>Best regards,<br/>The Team</p>
+    //   `,
+    //     };
 
         // Email to admin (notification)
         const adminMailOptions = {
@@ -145,7 +145,7 @@ export async function POST(request: NextRequest) {
 
         // Send both emails concurrently
         await Promise.all([
-            transporter.sendMail(userMailOptions),
+            // transporter.sendMail(userMailOptions),
             transporter.sendMail(adminMailOptions),
         ]);
 

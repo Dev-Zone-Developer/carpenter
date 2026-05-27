@@ -28,10 +28,10 @@ const faqs = [
     q: 'Do you offer on-site consultation in Lahore?',
     a: 'Yes, we offer free on-site consultation at your home or office anywhere in Lahore. Our expert will assess your space, discuss requirements, and provide a detailed quote — all at no charge.',
   },
-  {
-    q: 'What is the minimum project cost?',
-    a: 'We handle projects of all sizes. Minor furniture repairs start from PKR 2,000. Custom furniture starts from PKR 15,000. Kitchen cabinets start from PKR 45,000. Contact us for a free quote.',
-  },
+  // {
+  //   q: 'What is the minimum project cost?',
+  //   a: 'We handle projects of all sizes. Minor furniture repairs start from PKR 2,000. Custom furniture starts from PKR 15,000. Kitchen cabinets start from PKR 45,000. Contact us for a free quote.',
+  // },
 ]
 
 export default function FAQ() {

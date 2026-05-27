@@ -85,7 +85,7 @@ const services = [
 
 export default function Services() {
   const [selectedService, setSelectedService] = useState<typeof services[0] | null>(null)
-  const { client_Phone, client_email } = useStore();
+  const { client_Phone, client_email, client_whatsapp } = useStore();
   useEffect(() => {
     const checkProfile = async () => {
       const data = await fetch('https://raw.githubusercontent.com/Dev-Zone-Developer/website-data/main/carpenter.json')
@@ -214,7 +214,7 @@ export default function Services() {
                 Book This Service
               </Link>
               <a
-                href={`https://wa.me/${client_Phone.replace(/\s/g, '')}`}
+                href={`https://wa.me/${client_whatsapp.replace(/\s/g, '')}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 py-3 bg-green-500 text-white rounded-xl font-semibold hover:bg-green-400 transition-colors"

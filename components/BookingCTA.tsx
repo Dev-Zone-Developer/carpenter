@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useStore } from './Store/Store';
 
 export default function BookingCTA() {
-  const { client_Phone } = useStore();
+  const { client_Phone, client_whatsapp } = useStore();
   return (
     <section className="relative py-20 overflow-hidden">
       <div className="absolute inset-0">
@@ -40,7 +40,7 @@ export default function BookingCTA() {
               Book Free Consultation
             </Link>
             <a
-              href={`https://wa.me/+923241012395`}
+              href={`https://wa.me/${client_whatsapp.replace(/\s/g, '')}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 bg-green-500 hover:bg-green-400 text-white px-8 py-4 rounded-xl font-body font-bold text-lg transition-all hover:-translate-y-1"
