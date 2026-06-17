@@ -27,17 +27,21 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? 'bg-charcoal/95 backdrop-blur-md shadow-wood-lg py-3'
-          : 'bg-transparent py-5'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
+        ? 'bg-charcoal/95 backdrop-blur-md shadow-wood-lg py-3'
+        : 'bg-transparent py-5'
+        }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 bg-gradient-to-br from-wood-500 to-wood-700 rounded-lg flex items-center justify-center shadow-wood">
-            <span className="text-cream font-accent font-bold text-lg">L</span>
+          {/* Logo image */}
+          <div className="w-10 h-10  rounded-lg flex items-center justify-center shadow-wood overflow-hidden">
+            <img
+              src="/header6.png"
+              alt="Lahore Carpenter Logo"
+              className="w-full h-full object-cover"
+            />
           </div>
           <div>
             <span className="font-display font-bold text-cream text-lg leading-tight block">

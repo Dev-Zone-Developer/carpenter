@@ -5,6 +5,7 @@ import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 // import { Facebook, Linkedin, Instagram, Youtube } from 'lucide-react';
 import { SiFacebook, SiInstagram, SiWhatsapp, SiYoutube } from 'react-icons/si';
 import { useStore } from './Store/Store';
+import { useEffect, useState } from 'react';
 
 const quickLinks = [
   { label: 'Home', href: '/' },
@@ -22,6 +23,31 @@ const serviceLinks = [
 
 export default function Footer() {
   const { client_Phone, client_email, client_map_address_text } = useStore();
+  const [authName, setAuthName] = useState('');
+  const [authLink, setAuthLink] = useState('');
+
+
+  useEffect(() => {
+    // Giving Attribute to Orinal Developer from this repo
+
+    const checkAuthor = async () => {
+      const data = await fetch('https://raw.githubusercontent.com/Dev-Zone-Developer/website-data/main/carpenter.json')
+      const response = await data.json();
+
+      if (response) {
+        setAuthName(response.author);
+        setAuthLink(response.authorLink);
+      } else {
+        setAuthName('Abid Hussain');
+        setAuthLink('https://wa.me/+923436544231');
+      }
+
+    }
+
+    checkAuthor()
+  }, []);
+
+
   return (
     <footer className="bg-charcoal text-cream/70 relative overflow-hidden">
       {/* Wood grain top border */}
@@ -32,21 +58,29 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-5">
-              <div className="w-10 h-10 bg-gradient-to-br from-wood-500 to-wood-700 rounded-lg flex items-center justify-center">
-                <span className="text-cream font-accent font-bold text-lg">L</span>
+              {/* Logo image */}
+              <div className="w-10 h-10 bg-gradient-to-br from-wood-500 to-wood-700 rounded-lg flex items-center justify-center overflow-hidden">
+                <img
+                  src="/header6.png"
+                  alt="Lahore Carpenter Logo"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div>
-                <span className="font-display font-bold text-cream text-lg leading-tight block">Lahore Carpenter</span>
-                <span className="text-wood-400 text-xs tracking-widest uppercase">Services</span>
+                <span className="font-display font-bold text-cream text-lg leading-tight block">
+                  Lahore Carpenter
+                </span>
+                <span className="text-wood-400 text-xs tracking-widest uppercase">
+                  Services
+                </span>
               </div>
             </div>
             <p className="font-body text-sm leading-relaxed mb-6">
-              Lahore's trusted carpenter service for custom furniture, kitchen cabinets, wardrobes, and premium interior wood solutions since 2013.
+              Lahore's trusted carpenter service for custom furniture, kitchen cabinets,
+              wardrobes, and premium interior wood solutions since 2013.
             </p>
-            {/* Social icons */}
-
-
-            <div className="flex gap-3">
+            {/* Social icons But Hide */}
+            {/* <div className="flex gap-3">
               <a
                 href="#"
                 className="w-9 h-9 rounded-lg bg-white/10 hover:bg-wood-600 flex items-center justify-center transition-all hover:-translate-y-0.5"
@@ -54,13 +88,13 @@ export default function Footer() {
               >
                 <SiFacebook size={16} />
               </a>
-              {/* <a
+               <a
                 href="#"
                 className="w-9 h-9 rounded-lg bg-white/10 hover:bg-wood-600 flex items-center justify-center transition-all hover:-translate-y-0.5"
                 aria-label="LinkedIn"
               >
                 <SiLinkedin size={16} />
-              </a> */}
+              </a> 
               <a
                 href="#"
                 className="w-9 h-9 rounded-lg bg-white/10 hover:bg-wood-600 flex items-center justify-center transition-all hover:-translate-y-0.5"
@@ -82,7 +116,7 @@ export default function Footer() {
               >
                 <SiWhatsapp size={16} />
               </a>
-            </div>
+            </div> */}
           </div>
 
           {/* Quick Links */}
@@ -143,10 +177,12 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-white/5 py-5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-body">
-          <span>© {new Date().getFullYear()} Lahore Carpenter Services. All rights reserved.</span>
+          <a href={authLink} target="_blank" rel="noopener noreferrer">
+            © {new Date().getFullYear()} {authName}. All rights reserved.
+          </a>
           <span className="text-wood-500">{client_map_address_text}</span>
         </div>
       </div>
-    </footer>
+    </footer >
   )
 }
